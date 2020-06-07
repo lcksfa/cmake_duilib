@@ -1,20 +1,27 @@
-# CMake root file for cmake_duilib related apps
-#Date 2018-11-30
-#Author: Lcksfa(yousaid820@163.com)
-#
-#  CMake files for cmake_duilib
-#  file for each app is under the related sub-dir
-#
+cmake_minimum_required(VERSION 3.16.0)
+project(EAccoplus VERSION 1.0.0 LANGUAGES CXX C)
 
-cmake_minimum_required(VERSION 3.0)
+if(CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_CONFIGURATION_TYPES Debug Release)
+    set(CMAKE_CONFIGURATION_TYPES "${CMAKE_CONFIGURATION_TYPES}" CACHE STRING
+        "Reset the configurations to what we need"
+        FORCE)
+endif()
 
-project(cmake_duilib)
-
-message(STATUS," CMake project files for cmake_duilib")
-
-# this line is for UNICODE release,which is required by DuiDesigner 
 add_definitions(-DUNICODE -D_UNICODE)
 
-# add each CMake file
-add_subdirectory(duilib)
-add_subdirectory(XmlPreview)
+set(CMAKE_SUPPRESS_REGENERATION true)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
+
+include(CTest)
+enable_testing()
+
+add_subdirectory(src)
+add_subdirectory(test)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)

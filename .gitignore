@@ -1,1 +1,14 @@
-cmakebuildvs2010
+*
+!*/
+!*.cpp
+!*.hpp
+!*.h
+!*.rc
+!*.ico
+!*.xml
+!*.png
+!*.def
+!*.inl
+!CMakeLists.txt
+/build/
+bin/Debug/AccountantHelper/
